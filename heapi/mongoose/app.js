@@ -7,15 +7,12 @@ async function route() {
     db.once('open', function() {
         // console.log("true")
     });
-    
 
-    var Schema = mongoose.Schema;
-    var name;
-
-    var profilesSchema = new Schema({
+    var profilesSchema = new mongoose.Schema({
         name:  String,
         gender: String,
         current_age: Number,
+        height : Number,
         records : [{
             weight: Number,
             bench: Number,
@@ -69,7 +66,15 @@ async function route() {
     }
 
     get_profile.records.push(friend);
-    get_profile.save(done);
+    
+
+    await profiles.updateOne(
+        { _id: get_profile._id },
+        { $push: { records: friend }}
+        // done
+    );
+
+    // get_profile.save(done);
     
     
     db.close()
