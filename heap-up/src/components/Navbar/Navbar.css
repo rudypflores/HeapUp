@@ -1,0 +1,25 @@
+#navbar {
+    background-color:#f4f4f4;
+    height:8vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+}
+
+#title {
+    margin:0;
+    font-size:2em;
+    font-weight:bolder;
+    color:#c53C02;
+}
+
+#title-x {
+    margin:0;
+    color:#265A8F;
+}
+
+#title-y {
+    margin:0;
+    color:#ECC700;
+}
