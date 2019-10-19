@@ -3,11 +3,40 @@
     display:flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
 }
 
 #index-form {
     display: flex;
     flex-flow: column wrap;
-    margin:15px;
+    min-width:400px;
 }
 
+#name {
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+}
+
+#weight {
+    all:unset;
+    color: #265A8F;
+    border:1.5px solid #265A8F;
+    border-radius: 3px;
+    font-size: 1.5em;
+    padding:0.5em 1em;
+}
+
+#weight::placeholder {
+    color:#162F51;
+}
+
+#submit {
+    all:unset;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top:25px;
+    padding: 0.5em 1em;
+    background-color: #C53C02;
+    border-radius:3px;
+    color:#FAFAFA;
+}
