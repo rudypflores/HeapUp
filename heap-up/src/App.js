@@ -8,7 +8,11 @@ const App = () => {
   return (
     <React.Fragment>
         <Navbar />
+
+        {/* all pages */}
         <Index />
+
+
     </React.Fragment>
   );
 }
