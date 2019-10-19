@@ -6,10 +6,6 @@ const User = require("../mongoose/user")
 const profile = express.Router();
 
 profile.get("/:name", (req, res) => {
-    
-    //From Bo
-    var json = {gender : 'male', age : 3, weight : 453, bench : 234, 
-                squat : 789, deadlift : 987};
 
     var name = req.params.name
     var option = req.query.option
@@ -31,7 +27,11 @@ profile.post("/", async (req, res) => {
     var user = new User({
         name: req.body.name,
         gender: req.body.gender,
-        current_age: req.body.age
+        current_age: req.body.age,
+        height: {
+            feet: req.body.height.foot,
+            inches: req.body.height.inches
+        }
     })
     await user.save()
     console.log(user)
