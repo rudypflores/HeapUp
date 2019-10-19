@@ -29,28 +29,28 @@ async function route() {
     var profiles = mongoose.model('Profiles', profilesSchema);
 
     //insert part
-    // const an = new profiles({
-    //     name:  "Tru",
-    //     gender: "male",
-    //     current_age:   21,
-    //     records : [{
-    //         weight: 144,
-    //         bench: 144,
-    //         squat: 144,
-    //         deadlift: 144,
-    //         age: 19
-    //     },{
-    //         weight: 144,
-    //         bench: 144,
-    //         squat: 144,
-    //         deadlift: 144,
-    //         age: 20
-    //     }]
-    // });
-    // await an.save()
+     //const an = new profiles({
+         //name:  "An",
+         //gender: "male",
+         //current_age:   21,
+         //records : [{
+             //weight: 144,
+             //bench: 144,
+             //squat: 144,
+             //deadlift: 144,
+             //age: 19
+         //},{
+             //weight: 144,
+             //bench: 144,
+             //squat: 144,
+             //deadlift: 144,
+             //age: 20
+         //}]
+     //});
+     //await an.save()
 
     //delete part
-    // let docDel = await profiles.deleteOne({name: 'An'})
+    //let docDel = await profiles.deleteOne({name: 'An'})
     // console.log(docDel.deletedCount)
 
     // find part
