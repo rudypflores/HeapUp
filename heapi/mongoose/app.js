@@ -54,8 +54,23 @@ async function route() {
     // console.log(docDel.deletedCount)
 
     // find part
-    let doc = await profiles.findOne({ name: 'An' }).lean();
-    console.log(doc['name'])
+    let get_profile = await profiles.findOne({ name: 'An' }).lean();
+    records = get_profile['records'];
+    records.forEach(element => {
+        console.log(element['age'])
+    });
+    
+    var friend = {
+        weight: 144,
+        bench: 144,
+        squat: 144,
+        deadlift: 144,
+        age: 20
+    }
+
+    get_profile.records.push(friend);
+    get_profile.save(done);
+    
     
     db.close()
     
