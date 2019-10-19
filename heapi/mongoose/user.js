@@ -1,11 +1,4 @@
-const mongoose = require('mongoose');    
-mongoose.connect('mongodb+srv://avu1:Anvu23198@cluster0-oj2tn.gcp.mongodb.net/test?retryWrites=true&w=majority', {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // console.log("true")
-});
+const mongoose = require("mongoose")
 
 var profilesSchema = new mongoose.Schema({
     name:  String,
