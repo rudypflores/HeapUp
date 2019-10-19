@@ -1,0 +1,13 @@
+#index {
+    height: 74vh;
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+#index-form {
+    display: flex;
+    flex-flow: column wrap;
+    margin:15px;
+}
+
