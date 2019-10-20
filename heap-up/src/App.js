@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Index from './components/Index/Index';
+import LeaderBoard from './components/Leaderboard/Leaderboard';
 
 const App = () => {
 
@@ -11,7 +12,7 @@ const App = () => {
 
         {/* all pages */}
         <Index />
-
+        <LeaderBoard />
 
     </React.Fragment>
   );
