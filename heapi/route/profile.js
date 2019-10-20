@@ -33,8 +33,12 @@ profile.post("/", async (req, res) => {
             inches: req.body.height.inches
         }
     })
-    await user.save()
-    console.log(user)
+    try {
+        await user.save()
+    } catch (e) {
+        return res.status(400).send("error to insert data")
+    }
+
     res.status(200).send("sdf");
 })
 
@@ -43,18 +47,43 @@ profile.put("/", (req, res) => {
     res.send(data)
 })
 
-profile.delete("/:name", async (req, res) => {
-    console.log(req.params.name)
-    var du = await User.deleteOne({ name: req.params.name})
-    console.log(du)
-    res.send("remove successful")
+profile.post("/:name", async (req, res) => {
+    const weight = req.body.weight
+    const bench = req.body.bench
+    const squat = req.body.squat
+    const deadlift = req.body.deadlift
+    const age = req.body.age
+    if (!weight || !bench || !squat || !deadlift || !age) {
+        console.log(weight)
+        return res.status(404).send("record")
+    }
+    var record = {
+        weight, bench, squat, deadlift, age
+    }
+    
+    var getRecord = await User.findOne({name: req.params.name})
+
+    try {
+        await User.updateOne(
+            {_id: getRecord.id},
+            {$push: {records: record}}
+        )
+    } catch (e) {
+        return res.status(404).send("error update the data")
+    }    
+
+    res.status(200).send("updated sucessfully")
 })
 
-profile.post("/:record", (req, res) => {
-    const record = req.params.record
-    if (record) {
-        res.send(404).send("record ")
+profile.delete("/:name", async (req, res) => {
+    var du = await User.deleteOne({ name: req.params.name })
+    if(du.deletedCount == 0) {
+        res.status(404).send("subject doesn't exist")
     }
+    else {
+        res.status(200).send("remove successful")
+    }
+
 })
 
 module.exports = profile
