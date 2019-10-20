@@ -32,7 +32,7 @@ profile.post("/", async (req, res) => {
         current_age: req.body.age,
         height: {
             feet: req.body.height.foot,
-            inches: req.body.height.inches
+            inches: req.body.height.inch
         }
     })
     try {
