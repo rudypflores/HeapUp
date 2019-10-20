@@ -10,37 +10,17 @@ profile.get("/", async (req,res) => {
 })
 
 profile.get("/:name", async(req, res) => {
-
-    var n = req.params.name
-        let get_profile = await User.findOne({ name : n }).lean();
+    let get_profile
+    try {
+        get_profile = await User.findOne({ name : req.params.name }).lean();
         records = get_profile['records'];
-        records.forEach(element => {
-        console.log(element)
-    });
-    
+    } catch (e) {
+        return res.status(404).send({
+            "errmsg": "No such name",
+            "errcode": 140
+        })
+    }
     res.send(get_profile)
-    
-
-    
-    // var option = req.query.option
-    // if (option == undefined) {
-    //     records.forEach(element => {
-    //         console.log(element)
-    //     });
-    //     res.send(get_profile)
-    // } else {
-    //     console.log(option)
-    //     var str = option.split(",")
-    //     console.log(str)
-    //     var j={};
-
-    //     for(var i = 0; i < str.length; i++) {
-    //         //j[str[i]] = records[str[i]]
-    //         console.log(j[str[i]])
-    //     }
-
-    //     res.send(j)
-    // }  
 })
 
 profile.post("/", async (req, res) => {
@@ -56,15 +36,17 @@ profile.post("/", async (req, res) => {
     try {
         await user.save()
     } catch (e) {
-        return res.status(400).send("error to insert data")
+        return res.status(400).send({
+            "errmsg": "error inserting data",
+            "errcode": 101
+        })
     }
 
     res.status(200).send("sdf");
 })
 
 profile.put("/", (req, res) => {
-    const data = req.body
-    res.send(data)
+
 })
 
 profile.post("/:name", async (req, res) => {
@@ -75,7 +57,10 @@ profile.post("/:name", async (req, res) => {
     const age = req.body.age
     if (!weight || !bench || !squat || !deadlift || !age) {
         console.log(weight)
-        return res.status(404).send("record")
+        return res.status(404).send({
+            "errmsg": "null data",
+            "errcode": 404
+        })
     }
     var record = {
         weight, bench, squat, deadlift, age
