@@ -5,13 +5,9 @@ const User = require("../mongoose/user")
 
 const profile = express.Router();
 
-<<<<<<< HEAD
 profile.get("/", async (req,res) => {
     res.send(await User.find({}))
 })
-=======
-profile.get("/:name", (req, res) => {
->>>>>>> 4251bcbd5f0b452a7789d70ccbd8102dd5b7e3ad
 
 profile.get("/:name", async(req, res) => {
 
