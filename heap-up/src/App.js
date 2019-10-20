@@ -7,8 +7,8 @@ const App = () => {
 
   return (
     <React.Fragment>
-        <Leaderboard />
-        {/* <Home /> */}
+        {/* <Leaderboard /> */}
+        <Home />
     </React.Fragment>
   );
 }
