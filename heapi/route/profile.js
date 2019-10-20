@@ -5,26 +5,42 @@ const User = require("../mongoose/user")
 
 const profile = express.Router();
 
-profile.get("/:name", (req, res) => {
+profile.get("/", async (req,res) => {
+    res.send(await User.find({}))
+})
+
+profile.get("/:name", async(req, res) => {
+
+    var n = req.params.name
+        let get_profile = await User.findOne({ name : n }).lean();
+        records = get_profile['records'];
+        records.forEach(element => {
+        console.log(element)
+    });
     
-    //From Bo
-    var json = {gender : 'male', age : 3, weight : 453, bench : 234, 
-                squat : 789, deadlift : 987};
+    res.send(get_profile)
+    
 
-    var name = req.params.name
-    var option = req.query.option
-    console.log(option)
+    
+    // var option = req.query.option
+    // if (option == undefined) {
+    //     records.forEach(element => {
+    //         console.log(element)
+    //     });
+    //     res.send(get_profile)
+    // } else {
+    //     console.log(option)
+    //     var str = option.split(",")
+    //     console.log(str)
+    //     var j={};
 
-    var str = option.split(",")
-    console.log(str)
+    //     for(var i = 0; i < str.length; i++) {
+    //         //j[str[i]] = records[str[i]]
+    //         console.log(j[str[i]])
+    //     }
 
-    var j={};
-
-    for(var i = 0; i < str.length; i++) {
-        j[str[i]] = json[str[i]]
-    }
-
-    res.send(j)
+    //     res.send(j)
+    // }  
 })
 
 profile.post("/", async (req, res) => {
