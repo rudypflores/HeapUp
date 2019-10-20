@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './home.css';
 import Logo from '../../img/logo.svg';
 import SignUp from '../Index/SignUp';
+import SignIn from '../SignIn/SignIn';
 
 
 const Home = () => {
     const handleSignUp = () => {
-        ReactDOM.render(<SignUp/>, document.getElementById('root'));
+        ReactDOM.render(<SignUp />, document.getElementById('root'));
     };
 
     const handleSignIn = () => {
-        //render sign in
+        ReactDOM.render(<SignIn />, document.getElementById('root'));
     };
     return (
         <div id="home">

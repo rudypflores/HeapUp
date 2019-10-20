@@ -14,6 +14,17 @@ const heAPI = {
             return console.log(`User created status:${response.status}`);
         })
     },
+    get: () => {
+        return fetch(url, {
+            method: 'GET'
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(jsonResponse => {
+            return jsonResponse;
+        });
+    }
 };
 
 export default heAPI;

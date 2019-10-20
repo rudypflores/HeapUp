@@ -41,6 +41,8 @@ profile.get("/:username", async(req, res) => {
 
 profile.post("/", async (req, res) => {
     var user = new User({
+        username: req.body.username,
+        password: req.body.password,
         name: req.body.name,
         gender: req.body.gender,
         current_age: req.body.age,
@@ -125,7 +127,7 @@ profile.put("/:option", async (req, res) => {
     res.status(200).send("updated succesfully")
 })
 
-profile.post("/:name", async (req, res) => {
+profile.post("/:username", async (req, res) => {
     const weight = req.body.weight
     const bench = req.body.bench
     const squat = req.body.squat
@@ -142,7 +144,7 @@ profile.post("/:name", async (req, res) => {
         weight, bench, squat, deadlift, age
     }
     
-    var getRecord = await User.findOne({name: req.params.name})
+    var getRecord = await User.findOne({username: req.params.username})
 
     try {
         await User.updateOne(
@@ -156,8 +158,8 @@ profile.post("/:name", async (req, res) => {
     res.status(200).send("updated sucessfully")
 })
 
-profile.delete("/:name", async (req, res) => {
-    var du = await User.deleteOne({ name: req.params.name })
+profile.delete("/:username", async (req, res) => {
+    var du = await User.deleteOne({ username: req.params.username })
     if(du.deletedCount == 0) {
         res.status(404).send("subject doesn't exist")
     }
