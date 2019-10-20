@@ -8,7 +8,7 @@ const profile = express.Router();
 
 
 
-profile.get("/", isAuthenticated, async (req,res) => {
+profile.get("/", async (req,res) => {
     res.send(await User.find({}))
 })
 
