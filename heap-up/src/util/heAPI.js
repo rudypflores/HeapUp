@@ -14,6 +14,19 @@ const heAPI = {
             return console.log(`User created status:${response.status}`);
         })
     },
+    put: (data, username) => {
+        fetch(`url${username}`, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            return console.log(`User created status:${response.status}`);
+        })
+    },
+
     get: () => {
         return fetch(url, {
             method: 'GET'

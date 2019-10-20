@@ -8,7 +8,6 @@ import Navbar from '../Navbar/Navbar';
 const SignUp = () => {
     const [active, setActive] = useState(true);
 
-    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -23,9 +22,8 @@ const SignUp = () => {
         event.preventDefault();
         //send to database
         let user = {
-            // email:email,
-            // username:username,
-            // password:password,
+            username:username,
+            password:password,
             name: name,
             gender: gender,
             age: age,
@@ -47,7 +45,6 @@ const SignUp = () => {
                     <h1 id="instructions">Sign up</h1>
 
                     <label className="description">Enter your desired credentials</label>
-                    <input id="email" className="text-input" type="text" placeholder="Email" required onChange={event => setEmail(event.target.value)}/>
                     <input id="username" className="text-input" type="text" placeholder="Username" required onChange={event => setUsername(event.target.value)}/>
                     <input id="password" className="text-input" type="text" placeholder="Password" required onChange={event => setPassword(event.target.value)}/>
 
