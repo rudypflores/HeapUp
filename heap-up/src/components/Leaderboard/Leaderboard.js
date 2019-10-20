@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './leaderboard.css';
 import Card from './Card';
+import heAPI from '../../util/heAPI';
 
 
 const Leaderboard = () => {
+
+    useEffect(() => {
+        const fetchAPI = async() => {
+            const arr = await heAPI.get();
+            console.log(await arr);
+        }
+        fetchAPI();
+    }, []);
 
     return (
         <div id="Leaderboard">
