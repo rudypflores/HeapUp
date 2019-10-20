@@ -17,7 +17,7 @@ app.use("/api", profile)
 
 if (process.env.NODE_ENV == "production") {
    app.get("*", (req, res) => {
-       res.sendFile(path.join(__dirname, "..", "heap-up", "build.html"));
+       res.sendFile(path.join(__dirname, "..", "heap-up", "build", "index.html"));
    }) 
 }
 
