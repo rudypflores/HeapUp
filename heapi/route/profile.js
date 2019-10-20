@@ -42,11 +42,71 @@ profile.post("/", async (req, res) => {
         })
     }
 
-    res.status(200).send("sdf");
+    res.status(200).send("successfull creating user");
 })
 
-profile.put("/", (req, res) => {
+profile.put("/:option", async (req, res) => {
+    const option = req.params.option
+    const newData = req.body
+    let userData
+    
+    try {
+        userData = await User.findOne({name: newData.name})
+        userData.records
+    } catch (e) {
+        return res.status(404).send({
+            "errmsg": "the user doens't exist",
+            "errcode": 404
+        })
+    }
+    var updated
+    if (option == "gender") {
+        try {
+            updated = await User.updateOne(
+                {_id: userData.id},
+                {$set: {gender: newData.gender}}
+            )
+        } catch (e) {
+            return res.status(404).send({
+                "errmsg": "unable to update",
+                "errcode": 102
+            })
+        }
+    } else if(option == "age") {
+        try {
+            updated = await User.updateOne(
+                {_id: userData.id},
+                {$set: {current_age: newData.age}}
+            )
+        } catch (e) {
+            return res.status(404).send({
+                "errmsg": "unable to update",
+                "errcode": 102
+            })
+        }
+    } else if (option == "height") {
+        try {
+            updated = await User.updateOne(
+                {_id: userData.id},
+                {$set: {height: newData.height}}
+            )
+        } catch (e) {
+            return res.status(404).send({
+                "errmsg": "unable to update",
+                "errcode": 102
+            })
+        }
+    }
 
+
+    if (updated.nModified == 0) {
+        return res.status(404).send({
+            "errmsg": "changed nothing",
+            "errcode": 101
+        })
+    }
+
+    res.status(200).send("updated succesfully")
 })
 
 profile.post("/:name", async (req, res) => {
