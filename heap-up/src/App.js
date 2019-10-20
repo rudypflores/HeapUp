@@ -1,19 +1,12 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Index from './components/Index/Index';
-import LeaderBoard from './components/Leaderboard/Leaderboard';
+import Home from './components/Home/Home';
 
 const App = () => {
 
   return (
     <React.Fragment>
-        <Navbar />
-
-        {/* all pages */}
-        <Index />
-        <LeaderBoard />
-
+        <Home />
     </React.Fragment>
   );
 }

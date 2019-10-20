@@ -1,0 +1,53 @@
+#leaderboard {
+    display: flex;
+    align-items: center;
+}
+
+#title-board {
+    text-align: center;
+    color:#C53C02;
+    margin-top:25px;
+}
+
+#table {
+    display: flex;
+    margin:15px 5px;
+    border-radius: 3px;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+}
+
+#table:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+}
+
+@media only screen and (max-width:600px) {
+    #table {
+        flex-flow: column nowrap !important;
+    }
+
+    .row {
+        flex-flow: row nowrap !important;
+    }
+}
+
+.key {
+    color: #78909C;
+    font-weight: bolder;
+    padding: 0.5em;
+}
+
+.value {
+    color: #263238;
+    font-weight: bolder;
+    padding: 0.5em;
+}
+
+.row {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}

@@ -1,0 +1,34 @@
+#home {
+    background-color: #FAFAFA;
+    height:90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow:column nowrap;
+}
+
+#logo-home {
+    max-height:512px;
+    width:auto;
+}
+
+#container-row-home {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    min-width:300px;
+}
+
+.btn-next {
+    all:unset;
+    cursor: pointer;
+    font-size: 1.5em;
+    text-align: center;
+    margin:25px 0px;
+    padding: 0.5em 1em;
+    background-color: #ECC700;
+    border-radius:3px;
+    color:#FAFAFA;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+}

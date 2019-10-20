@@ -1,13 +1,11 @@
 import React from 'react';
 import './Navbar.css';
+import Logo from '../../img/logo.svg';
 
 const Navbar = () => {
     return(
         <div id="navbar">
-            <p id="title">Heap
-            <span id="title-x">Up</span>
-            <span id="title-y">!</span>
-            </p>
+            <img src={Logo} id="logo" alt="logo"/>
         </div>
     );
 };

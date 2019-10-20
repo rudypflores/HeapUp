@@ -63,11 +63,11 @@
     color:rgb(103, 125, 146);
 }
 
-#height {
+.description {
     font-size: 1.5em;
     color:#265A8F;
     font-weight: bolder;
-    margin-top:15px;
+    margin-top:25px;
 }
 
 #submit {
