@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './leaderboard.css';
 import Card from './Card';
 import heAPI from '../../util/heAPI';
+import NavBar from '../Navbar/Navbar';
+import Hub from '../Hub/Hub';
 
 
-const Leaderboard = () => {
+const Leaderboard = ({ username }) => {
 
     const [record, setRecord] = useState([]);
 
@@ -15,8 +18,8 @@ const Leaderboard = () => {
             const profiles = [];
         
             for(let user of users) {
-                await temp.push(user.records.pop());
-                await profiles.push({ name: user.name, gender: user.gender });
+                temp.push(user.records.pop());
+                profiles.push({ name: user.name, gender: user.gender });
             }
             const result = temp.filter(t => t !== undefined);
 
@@ -31,13 +34,18 @@ const Leaderboard = () => {
     }, []);
 
     return (
+        <React.Fragment>
+        <NavBar />
         <div id="Leaderboard">
             <h1 id="title-board">Leaderboard</h1>
-
             {record.map(r => {
                 return <Card key={r.toString()+Math.random()} name={r.name} gender={r.gender} age={r.age} weight={r.weight} bench={r.bench} squat={r.squat} dlift={r.deadlift}/>
             })}
+            <div id="wrap-button">
+            <button className="btn-next" onClick={() => ReactDOM.render(<Hub name={username}/>, document.getElementById('root'))}>Return</button>
+            </div>
         </div>
+        </React.Fragment>
     );
 };
 

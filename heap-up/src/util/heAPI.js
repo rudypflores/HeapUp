@@ -15,7 +15,7 @@ const heAPI = {
         })
     },
     put: (data, username) => {
-        fetch(`url${username}`, {
+        fetch(`${url}${username}`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -23,10 +23,9 @@ const heAPI = {
             }
         })
         .then(response => {
-            return console.log(`User created status:${response.status}`);
+            return console.log(`User record status:${response.status}`);
         })
     },
-
     get: () => {
         return fetch(url, {
             method: 'GET'
@@ -37,6 +36,14 @@ const heAPI = {
         .then(jsonResponse => {
             return jsonResponse;
         });
+    },
+    delete: (user) => {
+        fetch(url+user, {
+            method: 'delete'
+        })
+        .then(response => {
+            console.log(response);
+        })
     }
 };
 

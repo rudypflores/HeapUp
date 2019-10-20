@@ -1,0 +1,11 @@
+#welcome {
+    text-align: center;
+    color:#C53C02;
+}
+
+#wrap-buttons {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

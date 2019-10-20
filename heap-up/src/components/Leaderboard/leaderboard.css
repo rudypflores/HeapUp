@@ -51,3 +51,8 @@
     flex-flow: column nowrap;
     align-items: center;
 }
+
+#wrap-button {
+    display: flex;
+    justify-content: center;
+}
