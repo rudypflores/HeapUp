@@ -4,6 +4,10 @@ var profilesSchema = new mongoose.Schema({
     name:  String,
     gender: String,
     current_age: Number,
+    height: {
+        feet: Number,
+        inches: Number
+    },
     records : [{
         weight: Number,
         bench: Number,

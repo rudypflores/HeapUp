@@ -63,8 +63,16 @@
     color:rgb(103, 125, 146);
 }
 
+#height {
+    font-size: 1.5em;
+    color:#265A8F;
+    font-weight: bolder;
+    margin-top:15px;
+}
+
 #submit {
     all:unset;
+    cursor: pointer;
     min-width:500px;
     font-size: 1.5em;
     text-align: center;
