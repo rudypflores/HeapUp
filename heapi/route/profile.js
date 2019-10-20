@@ -1,25 +1,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
 
+const isAuthenticated = require("./authenthicate")
 const User = require("../mongoose/user")
 
 const profile = express.Router();
 
-///////////////////////////////
-function isAuthenticated(req, res, next) {
-    //check
-    var json = {"username" : "an", "password" : "an123"}
-    if (json.username === "an" && json.password === "an123") {
-        return next();
-    }
-    /*if (req.user.authenticated) {
-        return next();
-    } */ else {
-        res.send({"error": "Authen Failed"});
-    }
 
-}
-//////////////////////////////
 
 profile.get("/", isAuthenticated, async (req,res) => {
     res.send(await User.find({}))
@@ -48,7 +35,7 @@ profile.post("/", async (req, res) => {
         current_age: req.body.age,
         height: {
             feet: req.body.height.foot,
-            inches: req.body.height.inches
+            inches: req.body.height.inch
         }
     })
     try {
