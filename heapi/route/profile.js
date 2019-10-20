@@ -5,14 +5,30 @@ const User = require("../mongoose/user")
 
 const profile = express.Router();
 
-profile.get("/", async (req,res) => {
+///////////////////////////////
+function isAuthenticated(req, res, next) {
+    //check
+    var json = {"username" : "an", "password" : "an123"}
+    if (json.username === "an" && json.password === "an123") {
+        return next();
+    }
+    /*if (req.user.authenticated) {
+        return next();
+    } */ else {
+        res.send({"error": "Authen Failed"});
+    }
+
+}
+//////////////////////////////
+
+profile.get("/", isAuthenticated, async (req,res) => {
     res.send(await User.find({}))
 })
 
-profile.get("/:name", async(req, res) => {
+profile.get("/:username", async(req, res) => {
     let get_profile
     try {
-        get_profile = await User.findOne({ name : req.params.name }).lean();
+        get_profile = await User.findOne({ username : req.params.username }).lean();
         records = get_profile['records'];
     } catch (e) {
         return res.status(404).send({
