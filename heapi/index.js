@@ -17,10 +17,16 @@ app.use(bodyParser.json())
 app.use("/api", profile)
 
 if (process.env.NODE_ENV == "production") {
+<<<<<<< HEAD
   //app.get('*', (req,res) => {
     //res.sendFile(path.join(__dirname, "..", "heap-up", "build", "index.html"))
   //})
   app.use(express.static(path.join(__dirname, "..", "heap-up", "build")))
+=======
+   app.get("*", (req, res) => {
+       res.sendFile(path.join(__dirname, "..", "heap-up", "build", "index.html"));
+   }) 
+>>>>>>> e9e5f890be963a574a01dd9091b9ea182dbb7baf
 }
 
 app.listen(PORT, () => {
